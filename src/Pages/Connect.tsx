@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useEffect, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { Input } from "../Components/Input"
 import { UserContext } from "../Context/User"
 import { ErrorContain, Form, FormContain } from "../Styles/Connect"
@@ -9,7 +12,9 @@ export const Connect = () =>{
     const [error,setError]=useState<string | null>(null)
     const [errorNumber, setErrorNumber]= useState<number>(0)
 
-    const {setIdUser,idUser} = useContext(UserContext) as any
+    const {setIdUser,infoIdUser,idUser} = useContext(UserContext) as any
+
+    const navigate = useNavigate()
 
     useEffect(()=>{
         if(errorNumber>=3){
@@ -19,11 +24,18 @@ export const Connect = () =>{
     },[errorNumber])
 
     useEffect(()=>{
-        console.log(idUser);
-        
-    },[idUser])
+        if(infoIdUser){
+            const Carte = infoIdUser[1]
+            
+            if(Carte==="ACT"){
+                navigate("/Login")
+            }else{
+                navigate(`/User/${idUser}`)
+            }
+        }
+    },[infoIdUser])
 
-    const regex = /FLX-\d{3}-(ACPB|ADCFSA|HAPCO|VILFAI)-\d{4}/
+    const regex = /FLX-(ACT|HBT|SJR)-\d{3}-(ACPB|ADCFSA|HAPCO|VILFAI)-\d{4}/
 
     const handleSubmit = (e:any)=> {
         e.preventDefault()

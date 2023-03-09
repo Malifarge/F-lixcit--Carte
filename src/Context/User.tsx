@@ -5,6 +5,7 @@ const UserContext = createContext({})
 
 const UserContextProvider = ({children}:ContextPropsType)=>{
     const [idUser,setIdUser] = useState<string|null>(null)
+    const [infoIdUser,setInfoIdUser] = useState<string[]|null>(null)
 
     useEffect(()=>{
         const idLocal= localStorage.getItem('IdFLX')
@@ -16,12 +17,14 @@ const UserContextProvider = ({children}:ContextPropsType)=>{
     useEffect(()=>{
         if(idUser){
             localStorage.setItem('IdFLX',idUser)
+            setInfoIdUser(idUser.split("-"))
         }
     },[idUser])
 
     const value={
         idUser,
-        setIdUser
+        setIdUser,
+        infoIdUser
     }
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
