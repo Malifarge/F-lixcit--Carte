@@ -3,7 +3,7 @@
 import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { Input } from "../Components/Input"
-import { UserContext } from "../Context/User"
+import { UserContext } from "../Context/IdUser"
 import { ErrorContain, Form, FormContain } from "../Styles/Connect"
 
 export const Connect = () =>{
