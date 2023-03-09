@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Input } from "../Components/Input"
+import { UserContext } from "../Context/User"
 import { ErrorContain, Form, FormContain } from "../Styles/Connect"
 
 export const Connect = () =>{
@@ -8,6 +9,8 @@ export const Connect = () =>{
     const [error,setError]=useState<string | null>(null)
     const [errorNumber, setErrorNumber]= useState<number>(0)
 
+    const {setIdUser,idUser} = useContext(UserContext) as any
+
     useEffect(()=>{
         if(errorNumber>=3){
             setError("Ce n'est pas un identifiant valide: Veuillez contacter le support")
@@ -15,14 +18,18 @@ export const Connect = () =>{
         
     },[errorNumber])
 
+    useEffect(()=>{
+        console.log(idUser);
+        
+    },[idUser])
+
     const regex = /FLX-\d{3}-(ACPB|ADCFSA|HAPCO|VILFAI)-\d{4}/
 
     const handleSubmit = (e:any)=> {
         e.preventDefault()
         setError(null)
         if(regex.test(id)){
-        const idInfo = id.split("-") as string[]
-        console.log(idInfo);
+        setIdUser(id);
         
         }else{
             setError("Ce n'est pas un identifiant valide");
