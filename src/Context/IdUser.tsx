@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import { ContextPropsType } from "../Types/Context";
+import { ChildrenPropsType } from "../Types/Children";
 
 const UserContext = createContext({})
 
-const UserContextProvider = ({children}:ContextPropsType)=>{
+const UserContextProvider = ({children}:ChildrenPropsType)=>{
     const [idUser,setIdUser] = useState<string|null>(null)
     const [infoIdUser,setInfoIdUser] = useState<string[]|null>(null)
 
