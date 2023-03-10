@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useContext, useEffect, useState } from "react"
 import { UserParIdentifiant } from "../API/User"
 import { UserContext } from "../Context/IdUser"
