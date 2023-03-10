@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const HeaderStyle= styled.header`
     display:flex;
-    width:100%;
-    justify-Content: space-between;
+    width:100vw;
+    justify-Content: space-around;
+    align-items: center;
     padding:10px;
     position:fixed;
     top:0;

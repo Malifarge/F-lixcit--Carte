@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../Context/IdUser"
 import { bleu, jaune, Klein, vert } from "../Styles/Couleur"
+import { ButtonStyle } from "../Styles/Général"
 import { HeaderStyle } from "../Styles/Header"
 
 export const Header = ()=>{
@@ -27,7 +28,7 @@ export const Header = ()=>{
     return(
         <HeaderStyle color={color}>
             <img src="/images/Felixcite-Logo.png" alt="Logo Félixcité"/>
-            {idUser && <><p>{idUser}</p> <button onClick={logoutId}>Déconnection</button> </>}
+            {idUser && <><p>{idUser}</p> <ButtonStyle color={color} onClick={logoutId}>Déconnection</ButtonStyle> </>}
 
         </HeaderStyle>
     )
