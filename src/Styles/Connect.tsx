@@ -9,6 +9,7 @@ export const Form = styled.form`
 
 export const FormContain= styled.div`
 flex:1;
+margin: 72px 0 258px 0;
 display:flex;
 flex-direction: column;
 justify-content:center;

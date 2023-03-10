@@ -7,7 +7,7 @@ export const Header = ()=>{
 
     const [color,setColor]= useState<string>(Klein)
 
-    const {infoIdUser,idUser} = useContext(UserContext) as any
+    const {infoIdUser,idUser,logoutId} = useContext(UserContext) as any
 
     useEffect(()=>{
         if(infoIdUser){
@@ -27,7 +27,8 @@ export const Header = ()=>{
     return(
         <HeaderStyle color={color}>
             <img src="/images/Felixcite-Logo.png" alt="Logo Félixcité"/>
-            {idUser && <p>{idUser}</p>}
+            {idUser && <><p>{idUser}</p> <button onClick={logoutId}>Déconnection</button> </>}
+
         </HeaderStyle>
     )
 }

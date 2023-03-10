@@ -8,6 +8,7 @@ export const FooterStyle = styled.footer`
     position:fixed;
     bottom: 0;
     width:100%;
+    height: 218px;
     div{
         flex:1;
         display:flex;

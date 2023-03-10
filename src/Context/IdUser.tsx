@@ -21,10 +21,18 @@ const UserContextProvider = ({children}:ChildrenPropsType)=>{
         }
     },[idUser])
 
+    const logoutId = ()=>{
+        localStorage.removeItem('IdFLX')
+        setInfoIdUser(null)
+        setIdUser(null)
+        
+    }
+
     const value={
         idUser,
         setIdUser,
-        infoIdUser
+        infoIdUser,
+        logoutId
     }
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
