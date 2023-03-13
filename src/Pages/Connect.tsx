@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import { Input } from "../Components/Input"
 import { UserContext } from "../Context/IdUser"
 import { ErrorContain, Form, FormContain } from "../Styles/Connect"
+import { Klein } from "../Styles/Couleur"
+import { ButtonStyle } from "../Styles/Général"
 
 export const Connect = () =>{
 
@@ -48,16 +50,12 @@ export const Connect = () =>{
             setErrorNumber(errorNumber+1)
         }
     }
-
-    const handleIdChange = (e:any) =>{
-        setId(e.target.value)
-    }
-
+    
     return(
         <FormContain>
             <Form onSubmit={handleSubmit}>
-                <Input text="Identifiant" type="text" onChange={handleIdChange}/>
-                <button>Valider</button>
+                <Input text="Identifiant" type="text" onChange={(e:any)=>setId(e.target.value)}/>
+                <ButtonStyle color={Klein}>Valider</ButtonStyle>
             </Form>
             <div>
                 {error &&

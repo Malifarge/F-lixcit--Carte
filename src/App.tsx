@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 import { FormaPage } from "./Components/FormatPage";
+import { CommerçantContextProvider } from "./Context/Commercant";
 import { UserContextProvider } from "./Context/IdUser";
 import { Connect } from "./Pages/Connect";
 import { Info } from "./Pages/Info";
@@ -9,13 +10,15 @@ const App = () =>{
   return(
     <BrowserRouter>
       <UserContextProvider>
-        <FormaPage>
-          <Routes>
-            <Route path="/" element={<Connect/>}/>
-            <Route path="/User/:id" element={<Info/>}/>
-            <Route path="/Login" element={<LoginCommerçant/>}/>
-          </Routes>
-        </FormaPage>
+          <CommerçantContextProvider>
+            <FormaPage>
+              <Routes>
+                <Route path="/" element={<Connect/>}/>
+                <Route path="/User/:id" element={<Info/>}/>
+                <Route path="/Login" element={<LoginCommerçant/>}/>
+              </Routes>
+          </FormaPage>
+          </CommerçantContextProvider>
       </UserContextProvider>
     </BrowserRouter>
   )

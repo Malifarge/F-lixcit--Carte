@@ -2,6 +2,7 @@
 
 import { useContext, useEffect, useState } from "react"
 import { UserParIdentifiant } from "../API/User"
+import { CommerçantContext } from "../Context/Commercant"
 import { UserContext } from "../Context/IdUser"
 import { bleu, jaune, Klein, vert } from "../Styles/Couleur"
 import { ButtonStyle } from "../Styles/Général"
@@ -15,6 +16,7 @@ export const Header = ()=>{
     const [user,setUser]= useState<UserType|null>(null)
 
     const {infoIdUser,idUser,logoutId} = useContext(UserContext) as any
+    const {logoutCommerçant} = useContext(CommerçantContext) as any
 
     useEffect(()=>{
         UserFetch()
@@ -43,10 +45,15 @@ export const Header = ()=>{
         }
     },[infoIdUser])
 
+    const logout = () =>{
+        logoutCommerçant()
+        logoutId()
+    }
+
     return(
         <HeaderStyle color={color}>
             <img src="/images/Felixcite-Logo.png" alt="Logo Félixcité"/>
-            {idUser && <><p>{user && `${user.Prénom} ${user.Nom}`}</p> <ButtonStyle color={color} onClick={logoutId}>Déconnection</ButtonStyle> </>}
+            {idUser && <><p>{user && `${user.Prénom} ${user.Nom}`}</p> <ButtonStyle color={color} onClick={logout}>Déconnection</ButtonStyle> </>}
         </HeaderStyle>
     )
 }

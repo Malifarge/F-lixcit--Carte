@@ -12,3 +12,8 @@ export interface UserACTType{
     email: string,
     password: string 
 }
+
+export interface UserInfoType{
+    email:string,
+    password:string
+}
