@@ -27,13 +27,7 @@ export const Connect = () =>{
 
     useEffect(()=>{
         if(infoIdUser){
-            const Carte = infoIdUser[1]
-            
-            if(Carte==="ACT"){
-                navigate("/Login")
-            }else{
-                navigate(`/User/${idUser}`)
-            }
+            navigate(`/User/${idUser}`)
         }
     },[infoIdUser])
 

@@ -32,8 +32,6 @@ const CommerçantContextProvider = ({children}:ChildrenPropsType) =>{
     const ACT = async() =>{
         const data = await GetACT(token)
         setUser(data) 
-        console.log(data);
-        
     }
 
     const logoutCommerçant = ()=>{

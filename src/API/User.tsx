@@ -13,26 +13,34 @@ export const UserParIdentifiant = async ({id}:Idtype) =>{
       
 }
 
-export const UserACT = async({id}:Idtype)=>{
-
-let { data: User, error } = await supabase
-.from('User')
-.select(id)
-
-if(User){
-  return (User[0]);
-}else{
-  console.log(error);
-  
+export const UserIdParLogin = async()=>{
+  let { data: Identifiant, error } = await supabase.from('Identifiant').select()
+  if(Identifiant){
+    return Identifiant
+  }else{
+    console.log(error);
+    
   }
 }
 
-export const ACTCreate = async(body:UserInfoType)=>{
-  let { data, error } = await supabase.auth.signUp({
-    email: body.email,
-    password: body.password
-  })
+export const UserACT = async({id}:Idtype)=>{
+
+  let { data: User, error } = await supabase.from('User').select(id)
+
+  if(User){
+    return (User[0]);
+  }else{
+    console.log(error);
+    
+  }
 }
+
+// export const ACTCreate = async(body:UserInfoType)=>{
+//   let { data, error } = await supabase.auth.signUp({
+//     email: body.email,
+//     password: body.password
+//   })
+// }
 
 export const LoginACT = async(body:UserInfoType)=>{
   
@@ -41,7 +49,13 @@ export const LoginACT = async(body:UserInfoType)=>{
     password: body.password
   })
 
-  return data
+  if(data){
+    return data
+  }else{
+    console.log(error);
+    
+  }
+
   
 }
 

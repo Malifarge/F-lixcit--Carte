@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserParIdentifiant } from "../API/User"
 import { CommerçantContext } from "../Context/Commercant"
 import { UserContext } from "../Context/IdUser"
@@ -17,6 +18,8 @@ export const Header = ()=>{
 
     const {infoIdUser,idUser,logoutId} = useContext(UserContext) as any
     const {logoutCommerçant} = useContext(CommerçantContext) as any
+
+    const navigate = useNavigate()
 
     useEffect(()=>{
         UserFetch()
@@ -48,12 +51,17 @@ export const Header = ()=>{
     const logout = () =>{
         logoutCommerçant()
         logoutId()
+        navigate("/")
+    }
+
+    const handleConnexionCommerçant = ()=>{
+        navigate("/Login")
     }
 
     return(
         <HeaderStyle color={color}>
-            <img src="/images/Felixcite-Logo.png" alt="Logo Félixcité"/>
-            {idUser && <><p>{user && `${user.Prénom} ${user.Nom}`}</p> <ButtonStyle color={color} onClick={logout}>Déconnection</ButtonStyle> </>}
+            <img src="/images/Felixcite-Logo.png" alt="Logo Félixcité" onClick={()=>navigate("/")}/>
+            {idUser ? <><p>{user && `${user.Prénom} ${user.Nom}`}</p> <ButtonStyle color={color} onClick={logout}>Déconnection</ButtonStyle> </>: <ButtonStyle color={color} onClick={handleConnexionCommerçant}>Commerçant</ButtonStyle>}
         </HeaderStyle>
     )
 }
