@@ -22,9 +22,9 @@ export const LoginCommerçant = () =>{
         }
         const login = await LoginACT(body)
         setToken(login?.session?.access_token)
-        if(login){
-            const idComerçant = await UserIdParLogin() as any
-            console.log(idComerçant[0].id);
+        if(login?.user?.email){
+            const idComerçant = await UserIdParLogin(login.user.email) as any
+            console.log(idComerçant);
         }        
     }
 

@@ -15,8 +15,9 @@ export const Info = ()=>{
     const {id} = useParams()
 
     const [client,setClient]=useState<UserType|null>(null)
+    const [commerce,setCommerce]=useState<boolean>(false)
 
-    const {idUser,setIdUser} = useContext(UserContext) as any
+    const {idUser,setIdUser,infoIdUser} = useContext(UserContext) as any
     const {user} = useContext(CommerçantContext) as any
 
     useEffect(()=>{
@@ -27,6 +28,14 @@ export const Info = ()=>{
         }
     },[idUser])
 
+    useEffect(()=>{
+        if(user){
+            setCommerce(true)
+        }else{
+            setCommerce(false)
+        }
+    },[user])
+
     const UserFetch = async()=>{
         if(idUser){
             const userApi = await UserParIdentifiant(idUser) as any
@@ -35,12 +44,17 @@ export const Info = ()=>{
         
     }
 
+
     return (
         <InfoContain>
             <h1>{client?.Prénom} {client?.Nom}</h1>
              <p>{client?.email}</p>
              <p>{moment(client?.created_at).format("DD/MM/YYYY")}</p>
-             {client && <QRCodeCanvas value={client.id}/>}
+             {infoIdUser && <>
+             <p>Association: {infoIdUser[3]}</p>
+             </>}
+             {client && <QRCodeCanvas value={`${process.env.REACT_APP_URL}${client.id}`}/>}
+             {commerce && <p>Ce qu'on veut faire avec la carte</p>}
         </InfoContain>
     )
 }
