@@ -14,10 +14,10 @@ const ScaleAnim= keyframes`
 
 const RotateAnim=keyframes`
     0% {
-        transform: rotate(0deg);
+        transform: translateX(-300px)rotate(0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: translateX(0px)rotate(360deg);
     }
 `
 
@@ -31,15 +31,16 @@ export const HeaderStyle= styled.header`
     top:0;
     border-bottom: 2px solid ${({color})=>color}90;
 
-    img{
+    img {
         animation: ${RotateAnim} 0.8s linear;
-        width:50px;
-        opacity:0.8;
-
-        :hover{
-            opacity:1;
-            cursor:pointer;
-            animation: ${ScaleAnim} 0.8s linear;
-        };
-    }
+        width: 50px;
+        opacity: 0.8;
+      }
+    
+      img:hover {
+        opacity: 1;
+        cursor: pointer;
+        animation: ${ScaleAnim} 0.8s infinite;
+        animation-delay: 0s;
+      }
 `
