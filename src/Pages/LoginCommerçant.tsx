@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { LoginACT, UserIdParLogin } from "../API/User"
 import { Input } from "../Components/Input"
 import { CommerçantContext } from "../Context/Commercant"
@@ -14,6 +15,8 @@ export const LoginCommerçant = () =>{
 
     const {setToken} = useContext(CommerçantContext) as any
 
+    const navigate=useNavigate()
+
     const handleLogSubmit = async(e:any)=>{
         e.preventDefault()
         const body={
@@ -24,7 +27,7 @@ export const LoginCommerçant = () =>{
         setToken(login?.session?.access_token)
         if(login?.user?.email){
             const idComerçant = await UserIdParLogin(login.user.email) as any
-            console.log(idComerçant);
+            navigate(`/User/${idComerçant[0].id}`);
         }        
     }
 

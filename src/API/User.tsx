@@ -40,7 +40,6 @@ export const LoginACT = async(body:UserInfoType)=>{
     return data
   }else{
     console.log(error);
-    
   }
 
   

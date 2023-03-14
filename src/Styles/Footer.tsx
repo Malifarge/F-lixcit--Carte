@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const FooterStyle = styled.footer`
     background: black;
     display: flex;
-    padding:20px;
+    padding: 0 20px;
     align-items:center;
     position:fixed;
     bottom: 0;
-    width:100%;
+    width:100vw;
     height: 218px;
-    div{
+    section{
         flex:1;
         display:flex;
         flex-direction:column;
@@ -29,7 +29,24 @@ export const FooterStyle = styled.footer`
             };
         };
     };
+
+    article{
+        display:flex;
+        gap:20px;
+    };
+
+    div{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+    };
     img{
         width: 100px;
     };
+
+    @media (max-width: 500px){
+        flex-direction:column;
+        overflow:auto;
+        padding-bottom:10px;
+    }
 `

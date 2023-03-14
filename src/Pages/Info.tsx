@@ -18,6 +18,7 @@ export const Info = ()=>{
     const [client,setClient]=useState<UserType|null>(null)
     const [village,setVillage]=useState<string|null>(null)
     const [commerce,setCommerce]=useState<boolean>(false)
+    const [color,setColor]=useState<string>("#000000")
 
     const {idUser,setIdUser,infoIdUser} = useContext(UserContext) as any
     const {user} = useContext(CommerçantContext) as any
@@ -37,11 +38,17 @@ export const Info = ()=>{
 
     useEffect(()=>{
         if(user){
-            setCommerce(true)
+            if(client){
+                if(client.email===user.email){
+                    setCommerce(false)
+                }else{
+                    setCommerce(true)
+                }
+            }
         }else{
             setCommerce(false)
         }
-    },[user])
+    },[client])
 
     useEffect(()=>{
         Village()
@@ -62,17 +69,24 @@ export const Info = ()=>{
         }
     }
 
+    const handleColorChange = (e:any)=>{
+        setColor(e.target.value);  
+    }
+
 
     return (
-        <InfoContain>
+        <InfoContain color={color}>
             <h1>{client?.Prénom} {client?.Nom}</h1>
-             <p>{client?.email}</p>
-             <p>{moment(client?.created_at).format("DD/MM/YYYY")}</p>
-             {infoIdUser && <>
-             <p>Association: {infoIdUser[3]}</p>
-             </>}
-             {village && <p>Village: {village}</p>}
-             {client && <QRCodeCanvas value={`${process.env.REACT_APP_URL}${client.id}`}/>}
+            <section>
+                <article>
+                    <p>{client?.email}</p>
+                    {infoIdUser && <p>Association: {infoIdUser[3]}</p>}
+                    {village && <p>Village: {village}</p>}
+                    <p>{moment(client?.created_at).format("DD/MM/YYYY")}</p>
+                    <input type='color' value={color} onChange={handleColorChange}/>
+                </article>
+                {client && <QRCodeCanvas value={`${process.env.REACT_APP_URL}${client.id}`}/>}
+            </section>
              {commerce && <p>Ce qu'on veut faire avec la carte</p>}
         </InfoContain>
     )

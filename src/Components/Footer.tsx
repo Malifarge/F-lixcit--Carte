@@ -29,19 +29,26 @@ export const Footer = ()=>{
     return(
         <FooterStyle color={color}>
             <img src="/images/Felixcite-Logo-blanc.png" alt="Logo Félixcité"/>
-            <div>
-                <h3>Contacts</h3>
-                <a target={target} href="https://lafelixcite.paris">Félixcité</a>
-                <a target={target} href="https://www.facebook.com/LaFelixCite">Facebook</a>
-                <a target={target} href="https://www.linkedin.com/company/la-felixcite">Linkedin</a>
-                <a target={target} href="https://www.instagram.com/la_felixcite">instagram</a>
-                <a target={target} href="https://twitter.com/LFelixcite">Twitter</a>
-            </div>
-            <div>
+            <section>
+                <h3>Réseaux</h3>
+                <article>
+                    <div>
+                        <a target={target} href="https://lafelixcite.paris">Félixcité</a>
+                        <a target={target} href="https://www.facebook.com/LaFelixCite">Facebook</a>
+                        <a target={target} href="https://www.linkedin.com/company/la-felixcite">Linkedin</a>
+                    </div>
+                    <div>                       
+                        <a target={target} href="https://www.instagram.com/la_felixcite">instagram</a>
+                        <a target={target} href="https://twitter.com/LFelixcite">Twitter</a>
+                    </div>
+                </article>
+            </section>
+            <section>
                 <h3>Autre</h3>
-                <a href="#">Mention légale</a>
-                <a href="#">Règlement</a>
-            </div>
+                <a target={target} href="https://lafelixcite.paris/contact/">Contacts</a>
+                <a target={target} href="https://lafelixcite.paris/mentions-legales/">Mention légale</a>
+                <a href="/">Règlement</a>
+            </section>
         </FooterStyle>
     )
 }
