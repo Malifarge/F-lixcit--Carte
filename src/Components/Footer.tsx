@@ -28,7 +28,9 @@ export const Footer = ()=>{
 
     return(
         <FooterStyle color={color}>
-            <img src="/images/Felixcite-Logo-blanc.png" alt="Logo Félixcité"/>
+            <section>
+                <img src="/images/Felixcite-Logo-blanc.png" alt="Logo Félixcité"/>
+            </section>
             <section>
                 <h3>Réseaux</h3>
                 <article>
