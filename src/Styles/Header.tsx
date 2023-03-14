@@ -1,17 +1,5 @@
 import styled, { keyframes } from "styled-components";
 
-const ScaleAnim= keyframes`
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-`
-
 const RotateAnim=keyframes`
     0% {
         transform: translateX(-300px)rotate(0deg);
@@ -34,13 +22,17 @@ export const HeaderStyle= styled.header`
     img {
         animation: ${RotateAnim} 0.8s linear;
         width: 50px;
+        transform: scale(1);
+        transition: transform 1s;
         opacity: 0.8;
+        
       }
     
       img:hover {
         opacity: 1;
         cursor: pointer;
-        animation: ${ScaleAnim} 0.8s infinite;
+        transform: scale(1.1);
+        transition: transform 1s;
         animation-delay: 0s;
       }
 `
